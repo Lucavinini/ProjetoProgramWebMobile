@@ -135,3 +135,23 @@ section .descricao {
   font-size: 16px;
   line-height: 1.6;
 }
+
+.repos-lista {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+}
+
+.repos-lista li {
+  margin: 5px 0;
+}
+
+.repos-lista a {
+  color: #00bfff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.repos-lista a:hover {
+  text-decoration: underline;
+}
