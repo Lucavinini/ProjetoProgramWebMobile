@@ -4,20 +4,30 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+  background-color: black; 
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  overflow-y: scroll;
+
+
+}
+
 body {
   font-family: Arial, sans-serif;
   padding-top: 60px;
-  
 }
 
 .container {
   display: flex;
   height: 100vh;
+  scroll-snap-align: start;
 }
 
 .foto {
   flex: 1;
-  background-color: white;
+  background-color: rgb(42, 41, 41);
   display: flex;
   justify-content: center;
   align-items: center;
