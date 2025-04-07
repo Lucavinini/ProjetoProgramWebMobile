@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CineMoca - Críticas de Filmes e Séries</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">CineMoca</div>
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar filmes, séries, atores...">
+            </div>
+            <div class="user-actions">
+                <a href="#">Entrar</a>
+                <a href="#">Cadastrar</a>
+            </div>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="nav-container">
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Filmes</a></li>
+                <li><a href="#">Séries</a></li>
+                <li><a href="#">Notícias</a></li>
+                <li><a href="#">Em Breve</a></li>
+                <li><a href="#">Top Filmes</a></li>
+                <li><a href="#">Festivais</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main class="main-container">
+        <section class="hero">
+            <h1>Duna: Parte Dois</h1>
+            <p>Paul Atreides se une a Chani e aos Fremen enquanto busca vingança contra os conspiradores que destruíram sua família. Enfrentando uma escolha entre o amor de sua vida e o destino do universo, ele deve evitar um futuro terrível que só ele pode prever.</p>
+            <a href="#" class="btn">Ver Detalhes</a>
+        </section>
+        
+        <section>
+            <div class="section-title">
+                <h2>Em Cartaz</h2>
+                <a href="#">Ver todos</a>
+            </div>
+            <div class="movie-carousel" id="now-playing">
+                <!-- Os filmes serão inseridos via JavaScript -->
+            </div>
+        </section>
+        
+        <section>
+            <div class="section-title">
+                <h2>Populares</h2>
+                <a href="#">Ver todos</a>
+            </div>
+            <div class="movie-carousel" id="popular-movies">
+                <!-- Os filmes serão inseridos via JavaScript -->
+            </div>
+        </section>
+        
+        <section>
+            <div class="section-title">
+                <h2>Melhores Avaliados</h2>
+                <a href="#">Ver todos</a>
+            </div>
+            <div class="movie-carousel" id="top-rated">
+                <!-- Os filmes serão inseridos via JavaScript -->
+            </div>
+        </section>
+        
+        <section>
+            <div class="section-title">
+                <h2>Últimas Notícias</h2>
+                <a href="#">Ver todas</a>
+            </div>
+            <div class="news-grid">
+                <article class="news-card">
+                    <div class="news-image" style="background-image: url('https://via.placeholder.com/300x180');"></div>
+                    <div class="news-content">
+                        <h3 class="news-title">Novo trailer de "Deadpool & Wolverine" quebra recordes</h3>
+                        <p class="news-excerpt">O novo trailer do aguardado filme da Marvel alcançou 365 milhões de visualizações em 24 horas.</p>
+                        <p class="news-date">15 de março, 2024</p>
+                    </div>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-image" style="background-image: url('https://via.placeholder.com/300x180');"></div>
+                    <div class="news-content">
+                        <h3 class="news-title">Globo de Ouro anuncia novas categorias para 2025</h3>
+                        <p class="news-excerpt">Prêmio incluirá Melhor Performance de Voz e Melhor Filme de Streaming.</p>
+                        <p class="news-date">12 de março, 2024</p>
+                    </div>
+                </article>
+                
+                <article class="news-card">
+                    <div class="news-image" style="background-image: url('https://via.placeholder.com/300x180');"></div>
+                    <div class="news-content">
+                        <h3 class="news-title">Diretor de "Interestelar" anuncia novo projeto científico</h3>
+                        <p class="news-excerpt">Christopher Nolan está trabalhando em um filme sobre o desenvolvimento da bomba atômica.</p>
+                        <p class="news-date">8 de março, 2024</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Sobre Nós</h3>
+                <ul>
+                    <li><a href="#">Quem Somos</a></li>
+                    <li><a href="#">Equipe</a></li>
+                    <li><a href="#">Contato</a></li>
+                    <li><a href="#">Trabalhe Conosco</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Termos</h3>
+                <ul>
+                    <li><a href="#">Termos de Uso</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
+                    <li><a href="#">Cookies</a></li>
+                    <li><a href="#">Ajuda</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Redes Sociais</h3>
+                <ul>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">Twitter</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">YouTube</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Assine Nossa Newsletter</h3>
+                <form>
+                    <input type="email" placeholder="Seu e-mail" style="width: 100%; padding: 0.5rem; margin-bottom: 0.5rem; border-radius: 4px; border: none;">
+                    <button type="submit" class="btn" style="width: 100%;">Assinar</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2024 CineMoca. Todos os direitos reservados.
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
