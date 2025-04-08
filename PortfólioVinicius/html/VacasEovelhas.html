@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Jogo Bulls and Cows</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    #palpite {
+      width: 100px;
+      font-size: 16px;
+      padding: 5px;
+    }
+
+    button {
+      margin-left: 10px;
+      padding: 5px 10px;
+    }
+
+    ul {
+      margin-top: 20px;
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Jogo Bulls and Cows</h1>
+  <p>Digite um número de 4 dígitos únicos:</p>
+
+  <input type="text" id="palpite" maxlength="4" />
+  <button id="btnEnviar">Enviar</button>
+  <button id="btnMostrar">Mostrar Resposta</button>
+
+  <ul id="tentativas">
+    <!-- Tentativas aparecerão aqui -->
+  </ul>
+
+ 
+</body>
+</html>
