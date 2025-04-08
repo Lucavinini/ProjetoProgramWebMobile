@@ -49,6 +49,26 @@ function gerarCombinacao() {
     }
     return combinacao;
 }
+
+function resetarJogo() {
+    tentativas = 0;
+    alert("O jogo foi resetado! Uma nova combinação secreta foi gerada.");
+    tentativasLista.innerHTML = ''
+}
+
+function mostrarCombinacao() {
+    alert(`A combinação secreta é: ${combinacaoSecreta}`);
+    resetarJogo(); // Reseta o jogo ao clicar no botão de mostrar combinação
+}
+
+function registrarTentativa() {
+    tentativas++;
+
+    if (tentativas >= MAX_TENTATIVAS) {
+        resetarJogo(); // Reseta automaticamente após 4 tentativas
+    }
+}
+
   </script>
 </body>
 </html>
