@@ -38,6 +38,17 @@
     <!-- Tentativas aparecerão aqui -->
   </ul>
 
- 
+  <script>
+function gerarCombinacao() {
+    const numeros = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    let combinacao = '';
+    while (combinacao.length < 4) {
+        const indice = Math.floor(Math.random() * 10);
+        const digito = numeros.splice(indice, 1)[0];
+        combinacao += digito;
+    }
+    return combinacao;
+}
+  </script>
 </body>
 </html>
