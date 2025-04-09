@@ -156,3 +156,8 @@ section .descricao {
 .repos-lista a:hover {
   text-decoration: underline;
 }
+.foto img {
+  width: 300px;
+  height: auto;
+
+}
