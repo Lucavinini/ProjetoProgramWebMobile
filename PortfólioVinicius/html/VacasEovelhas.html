@@ -26,6 +26,7 @@
     }
   </style>
 </head>
+
 <body>
   <h1>Jogo Bulls and Cows</h1>
   <p>Digite um número de 4 dígitos únicos:</p>
@@ -68,7 +69,62 @@ function registrarTentativa() {
         resetarJogo(); // Reseta automaticamente após 4 tentativas
     }
 }
+function calcularResultado(palpite, combinacao) {
 
+let bulls = 0, cows = 0;
+for (let i = 0; i < 4; i++) {
+    if (palpite[i] === combinacao[i]) {
+        bulls++;
+    } else if (combinacao.includes(palpite[i])) {
+        cows++;
+    }
+}
+return { bulls, cows };
+}
+
+let combinacaoSecreta = gerarCombinacao();
+const tentativasLista = document.getElementById('tentativas');
+const inputPalpite = document.getElementById('palpite');
+const btnEnviar = document.getElementById('btnEnviar');
+const btnMostrar = document.getElementById('btnMostrar');
+let tentativas = 0;
+const MAX_TENTATIVAS = 4;
+
+// Enviar Palpite
+btnEnviar.addEventListener('click', () => {
+const palpite = inputPalpite.value.trim();
+
+// Validação: palpite deve ter 4 dígitos numéricos
+if (!/^\d{4}$/.test(palpite)) {
+    alert('Por favor, digite exatamente 4 dígitos numéricos.');
+    return;
+}
+
+const { bulls, cows } = calcularResultado(palpite, combinacaoSecreta);
+
+// Cria novo item na lista com a tentativa e resultado
+const item = document.createElement('li');
+item.textContent = `Palpite: ${palpite} - Bulls: ${bulls}, Cows: ${cows}`;
+
+// Insere o item no início da lista para manter ordem reversa
+tentativasLista.insertBefore(item, tentativasLista.firstChild);
+inputPalpite.value = '';
+inputPalpite.focus();
+registrarTentativa(); 
+
+});
+
+// Botão para mostrar a combinação secreta em um alert 
+btnMostrar.addEventListener('click', () => {
+alert(`A combinação secreta é: ${combinacaoSecreta}`);
+});
+
+// Opcional: enviar palpite ao pressionar Enter
+inputPalpite.addEventListener('keydown', (event) => {
+if (event.key === 'Enter') {
+    btnEnviar.click();
+}
+});
   </script>
 </body>
 </html>
