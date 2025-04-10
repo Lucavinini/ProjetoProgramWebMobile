@@ -27,7 +27,7 @@ body {
 
 .foto {
   flex: 1;
-  background-color: rgb(42, 41, 41);
+  background-color: black;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -156,8 +156,13 @@ section .descricao {
 .repos-lista a:hover {
   text-decoration: underline;
 }
-.foto img {
-  width: 300px;
-  height: auto;
 
+.foto img {
+  width: 1000px;
+  height: auto;
+}
+
+.foto code {
+  width: 1000px;
+  height: 50%;
 }
