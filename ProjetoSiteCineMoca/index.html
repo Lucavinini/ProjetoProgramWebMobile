@@ -22,17 +22,43 @@
     
     <nav>
         <div class="nav-container">
-            <ul class="nav-links">
+
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Filmes</a></li>
-                <li><a href="#">Séries</a></li>
+                
+                <li class="dropdown">
+                    <a href="#">Filmes <span class="dropdown-arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Em Cartaz</a></li>
+                        <li><a href="#">Em Breve</a></li>
+                        <li><a href="#">Melhores Avaliados</a></li>
+                    </ul>
+                </li>
+                
+                <li class="dropdown">
+                    <a href="#">Séries <span class="dropdown-arrow">▼</span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Populares</a></li>
+                        <li><a href="#">Novas Temporadas</a></li>
+                    </ul>
+                </li>
+                
                 <li><a href="#">Notícias</a></li>
-                <li><a href="#">Em Breve</a></li>
-                <li><a href="#">Top Filmes</a></li>
                 <li><a href="#">Festivais</a></li>
+                <li><a href="#">Críticas</a></li>
             </ul>
         </div>
     </nav>
+
+    <main class="main-container">
+        <section class="search-section">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Digite o nome do filme...">
+                <div id="searchResults" class="search-results"></div>
+            </div>
+        </section>
     
     <main class="main-container">
         <section class="hero">
