@@ -1,6 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", function () {
-    const username = "Lucavinini"; // 👈 troque aqui!
+    const username = "Lucavinini";
     const lista = document.getElementById("repositorios");
   
     fetch(`https://api.github.com/users/${username}/repos`)
