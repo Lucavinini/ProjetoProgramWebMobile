@@ -44,7 +44,7 @@ function gerarCombinacao() {
     const numeros = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
     let combinacao = '';
     while (combinacao.length < 4) {
-        const indice = Math.floor(Math.random() * 10);
+      const indice = Math.floor(Math.random() * numeros.length);
         const digito = numeros.splice(indice, 1)[0];
         combinacao += digito;
     }
@@ -53,6 +53,7 @@ function gerarCombinacao() {
 
 function resetarJogo() {
     tentativas = 0;
+    combinacaoSecreta = gerarCombinacao();
     alert("O jogo foi resetado! Uma nova combinação secreta foi gerada.");
     tentativasLista.innerHTML = ''
 }
