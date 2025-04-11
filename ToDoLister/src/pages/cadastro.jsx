@@ -1,23 +1,35 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Parse from '../parseconfig.js'
 import "./LoginPage.css";
 
 const CadastroPage = () => {
   const [usuario, setUsuario] = useState('');
   const [senha, setSenha] = useState('');
+  const [mensagem, setMensagem] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-
+  
     if (usuario && senha) {
-      alert("Usuário cadastrado!");
-      navigate('/AreaDeTrabalho');
+      const user = new Parse.User();
+      user.set('username', usuario);
+      user.set('password', senha);
+  
+      try {
+        await user.signUp();
+        setMensagem('Usuário cadastrado com sucesso!');
+        navigate('/AreaDeTrabalho');
+      } catch (error) {
+        console.error('Erro ao cadastrar:', error);
+        setMensagem('Erro ao cadastrar. Tente outro nome de usuário.');
+      }
     } else {
       alert('Preencha todos os campos!');
     }
   };
-
+  
   return (
     <div className="login-container">
       <form onSubmit={handleLogin} className="login-box">
