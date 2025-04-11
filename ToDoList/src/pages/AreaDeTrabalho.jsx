@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './AreaDeTrabalho.css';
 
 const AreaDeTrabalho = () => {
@@ -7,6 +8,33 @@ const AreaDeTrabalho = () => {
     { id: 2, texto: '', cor: '#922047' },
     { id: 3, texto: '', cor: '#00ff99' },
   ]);
+
+  const [info, setInfo] = useState('Carregando data...');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const buscarDataHora = async () => {
+      try {
+        const response = await fetch('https://worldtimeapi.org/api/timezone/America/Sao_Paulo');
+        if (!response.ok) throw new Error('Erro na resposta da API');
+        const data = await response.json();
+        const dataHora = new Date(data.datetime);
+        const dataFormatada = dataHora.toLocaleDateString('pt-BR', {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric'
+        });
+        const horaFormatada = dataHora.toLocaleTimeString('pt-BR');
+        setInfo(`${dataFormatada} - ${horaFormatada}`);
+      } catch (error) {
+        console.error('Erro ao buscar data/hora:', error);
+        setInfo('Não foi possível carregar a data e hora agora.');
+      }
+    };
+
+    buscarDataHora();
+  }, []);
 
   const adicionarBloco = () => {
     const novoBloco = {
@@ -30,7 +58,8 @@ const AreaDeTrabalho = () => {
   return (
     <div className="area-container">
       <header className="top-bar">
-        <span>Espaço para API de CLIMA</span>
+        <span className="info">{info}</span>
+        <button className="exit-btn" onClick={() => navigate('/')}>Saída</button>
       </header>
 
       <div className="blocos-wrapper">
