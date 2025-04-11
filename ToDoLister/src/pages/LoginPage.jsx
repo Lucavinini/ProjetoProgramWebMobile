@@ -11,13 +11,12 @@ const LoginPage = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-
-    if (usuario && senha) {
-      navigate('/AreaDeTrabalho');
-    } else {
+  
+    if (!usuario || !senha) {
       alert('Preencha todos os campos!');
+      return;
     }
-
+  
     try {
       await Parse.User.logIn(usuario, senha);
       setMensagem('Login realizado com sucesso!');

@@ -1,34 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Parse from '../parseconfig';
 import './AreaDeTrabalho.css';
 
 const AreaDeTrabalho = () => {
-  const [blocos, setBlocos] = useState([
-    { id: 1, texto: '', cor: '#ddd' },
-    { id: 2, texto: '', cor: '#922047' },
-    { id: 3, texto: '', cor: '#00ff99' },
-  ]);
-
+  const [blocos, setBlocos] = useState([]);
   const [info, setInfo] = useState('Carregando data...');
   const navigate = useNavigate();
+
 
   useEffect(() => {
     const buscarDataHora = async () => {
       try {
         const response = await fetch('https://worldtimeapi.org/api/timezone/America/Sao_Paulo');
-        if (!response.ok) throw new Error('Erro na resposta da API');
         const data = await response.json();
         const dataHora = new Date(data.datetime);
         const dataFormatada = dataHora.toLocaleDateString('pt-BR', {
-          weekday: 'long',
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric'
+          weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
         });
         const horaFormatada = dataHora.toLocaleTimeString('pt-BR');
         setInfo(`${dataFormatada} - ${horaFormatada}`);
       } catch (error) {
-        console.error('Erro ao buscar data/hora:', error);
         setInfo('Não foi possível carregar a data e hora agora.');
       }
     };
@@ -36,23 +28,74 @@ const AreaDeTrabalho = () => {
     buscarDataHora();
   }, []);
 
-  const adicionarBloco = () => {
-    const novoBloco = {
-      id: Date.now(),
-      texto: '',
-      cor: '#dddddd'
+  useEffect(() => {
+    const carregarBlocos = async () => {
+      const Bloco = Parse.Object.extend('Bloco');
+      const query = new Parse.Query(Bloco);
+      query.equalTo('usuario', Parse.User.current());
+      try {
+        const resultados = await query.find();
+        const blocosFormatados = resultados.map((bloco) => ({
+          id: bloco.id,
+          texto: bloco.get('texto'),
+          cor: bloco.get('cor'),
+        }));
+        setBlocos(blocosFormatados);
+      } catch (err) {
+        console.error('Erro ao carregar blocos:', err);
+      }
     };
-    setBlocos([...blocos, novoBloco]);
+
+    carregarBlocos();
+  }, []);
+
+ 
+  const adicionarBloco = async () => {
+    const Bloco = Parse.Object.extend('Bloco');
+    const bloco = new Bloco();
+
+    bloco.set('texto', '');
+    bloco.set('cor', '#dddddd');
+    bloco.set('usuario', Parse.User.current());
+
+    try {
+      const resultado = await bloco.save();
+      setBlocos([...blocos, {
+        id: resultado.id,
+        texto: '',
+        cor: '#dddddd',
+      }]);
+    } catch (err) {
+      console.error('Erro ao salvar bloco:', err);
+    }
   };
 
-  const removerBloco = (id) => {
-    setBlocos(blocos.filter(bloco => bloco.id !== id));
+  
+  const editarTexto = async (id, novoTexto) => {
+    const novosBlocos = blocos.map((b) => b.id === id ? { ...b, texto: novoTexto } : b);
+    setBlocos(novosBlocos);
+
+    const Bloco = Parse.Object.extend('Bloco');
+    const query = new Parse.Query(Bloco);
+    try {
+      const bloco = await query.get(id);
+      bloco.set('texto', novoTexto);
+      await bloco.save();
+    } catch (err) {
+      console.error('Erro ao atualizar bloco:', err);
+    }
   };
 
-  const editarTexto = (id, novoTexto) => {
-    setBlocos(blocos.map(bloco =>
-      bloco.id === id ? { ...bloco, texto: novoTexto } : bloco
-    ));
+  const removerBloco = async (id) => {
+    const Bloco = Parse.Object.extend('Bloco');
+    const query = new Parse.Query(Bloco);
+    try {
+      const bloco = await query.get(id);
+      await bloco.destroy();
+      setBlocos(blocos.filter((b) => b.id !== id));
+    } catch (err) {
+      console.error('Erro ao remover bloco:', err);
+    }
   };
 
   return (
