@@ -1,17 +1,18 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
-// depois você pode importar RegisterPage e DashboardPage também
+import CadastroPage from './pages/cadastro';
+
 
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<LoginPage />} />
-        {/* <Route path="/cadastro" element={<RegisterPage />} /> */}
-        {/* <Route path="/dashboard" element={<DashboardPage />} /> */}
+        <Route path="/cadastro" element={<CadastroPage />} />
       </Routes>
     </Router>
   );
 }
+
 
 export default App;
