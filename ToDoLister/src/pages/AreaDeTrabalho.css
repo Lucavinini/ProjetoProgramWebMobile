@@ -89,3 +89,10 @@
     cursor: pointer;
   }
   
+  .motivacional {
+    color: white;
+    font-style: italic;
+    font-size: 14px;
+    flex: 1;
+    padding: 0 1rem;
+  }
