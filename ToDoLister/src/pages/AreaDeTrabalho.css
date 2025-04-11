@@ -6,6 +6,7 @@
     flex-direction: column;
     padding: 0;
     margin: 0;
+    width: 100%;
   }
   
 
@@ -66,7 +67,7 @@
     position: absolute;
     top: 5px;
     right: 5px;
-    background-color: #000;
+    background-color: rgba(255, 255, 255, 0);
     color: white;
     border: none;
     border-radius: 6px;
@@ -80,7 +81,7 @@
   .adicionar {
     width: 40px;
     height: 40px;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0);
     color: white;
     border: none;
     font-size: 24px;
@@ -95,4 +96,9 @@
     font-size: 14px;
     flex: 1;
     padding: 0 1rem;
+  }
+
+  #root {
+    height: 100%;
+    width: 100%;
   }

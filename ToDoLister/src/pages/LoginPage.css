@@ -3,6 +3,7 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 
 /* Container da página de login, centraliza tudo */
@@ -12,6 +13,8 @@ html, body {
   justify-content: center;
   height: 100vh;
   background-color: #000;
+  min-height: 100vh;
+  width: 100vw;
 }
 
 /* Caixa de login centralizada */
