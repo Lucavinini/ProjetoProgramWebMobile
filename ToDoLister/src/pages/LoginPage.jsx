@@ -5,25 +5,15 @@ import "./LoginPage.css";
 const LoginPage = () => {
   const [usuario, setUsuario] = useState('');
   const [senha, setSenha] = useState('');
-  const [mensagem, setMensagem] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
 
     if (usuario && senha) {
       navigate('/AreaDeTrabalho');
     } else {
       alert('Preencha todos os campos!');
-    }
-    
-    try {
-      await Parse.User.logIn(usuario, senha);
-      setMensagem('Login realizado com sucesso!');
-      navigate('/AreaDeTrabalho');
-    } catch (error) {
-      console.error('Erro ao logar:', error);
-      setMensagem('Usuário ou senha inválidos!');
     }
   };
 
